@@ -4,17 +4,89 @@
     padding-left: 16px;
     padding-right: 16px;
 }
-#content{
-    padding:24px;
-   
+
+#content {
+    padding: 24px;
 }
-#mainname{
+
+#content-top {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+}
+
+#mainname {
     margin: 0;
 }
-body{
+
+#gamelist {
+    padding-left: 20px;
+    border-width: 1px;
+    border-color: gray;
+    border-style: solid;
+    width: 200px;
+    height: 120px;
+}
+
+#gameinfo {
+    border-color: red;
+    border-width: 3px;
+    border-style: solid;
+    width: 400px;
+    margin-left: 200px;
+}
+
+#gameinfo thead {
+    text-align: center;
+}
+
+#gameinfo tr {
+    border-color: green;
+    border-width: 3px;
+    border-style: solid;
+}
+
+#gameinfo td {
+    border-color: hotpink;
+    border-width: 3px;
+    border-style: solid;
+}
+
+li {
+    margin: 3px;
+    font-size: 13px;
+}
+
+body {
     margin: 0;
 }
+
 a {
-    
     text-decoration: none;
+}
+
+.content-division {
+    border-bottom: 1px solid gray;
+    padding-bottom: 5px;
+}
+
+.content-division h2 {
+    margin: 0;
+}
+
+.content-division h3 {
+    margin: 0;
+}
+
+td img {
+    width: 200px;
+    text-align: center;
+}
+
+@media(max-width: 800px) {
+    #content-top {
+        display: block;
+    }
+    #content-top {
+        border-right: none;
+    }
 }
