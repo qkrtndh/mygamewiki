@@ -1,25 +1,28 @@
-var http = require('http');	// 서버 만드는 모듈 불러오기
+const express = require('express');
+const app = express();
+var bodyParser = require('body-parser');
 var fs = require('fs');
-var url = require('url');
-function templateHTML(title,list,body){
-  return `
-  <!doctype html>
-  <html>
-    <head>
-     <title>WEB1 - ${title}</title>
-      <meta charset="utf-8">
-    </head>
-    <body>
-      <h1><a href="/">WEB</a></h1>
-       ${list}
-       ${body}
-    </body>
-   </html>
-  `
-  ;
-}
-var app = http.createServer(function(request,response){
-    console.log(request);
+
+//var topicRouter = require('./routes/topic');
+var indexRouter = require('./js/index');
+
+app.use(express.static('public'));
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get('*', function (request, response, next) {
+  fs.readdir('./data', function (error, filelist) {
+    request.list = filelist;
+    next();
+  })
+})
+app.use('/',indexRouter);
+app.listen(1972, function () {
+  return console.log('example app listening on port 1972');
+})
+
+
+
+/*app = http.createServer(function(request,response){
     var url = request.url;
     if(request.url == '/'){
       url = '/index.html';	// 실행할 url
@@ -31,4 +34,4 @@ var app = http.createServer(function(request,response){
     response.end(fs.readFileSync(__dirname + url));
  
 });
-app.listen(1972);
+app.listen(1972);*/
